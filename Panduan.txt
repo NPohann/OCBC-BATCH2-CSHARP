@@ -1,0 +1,5 @@
+Panduan Assignment 1
+
+1. Pilih menu yang diinginkan
+2. Jika selesai akan ada pilihan untuk melanjutkan aplikasi
+3. Ketik Y jika ingin memilih menu lain, ketik N jika ingin keluar
