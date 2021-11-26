@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\USER\\Documents\\OCBC NISP\\bootcamp\\sesi09\\kantor_webapi\\Kantor_WebAPI.csproj": {}
+    "C:\\Users\\USER\\Documents\\OCBC NISP\\Bootcamp\\Sesi09\\Kantor_WebAPI\\Kantor_WebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\USER\\Documents\\OCBC NISP\\bootcamp\\sesi09\\kantor_webapi\\Kantor_WebAPI.csproj": {
+    "C:\\Users\\USER\\Documents\\OCBC NISP\\Bootcamp\\Sesi09\\Kantor_WebAPI\\Kantor_WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USER\\Documents\\OCBC NISP\\bootcamp\\sesi09\\kantor_webapi\\Kantor_WebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\USER\\Documents\\OCBC NISP\\Bootcamp\\Sesi09\\Kantor_WebAPI\\Kantor_WebAPI.csproj",
         "projectName": "Kantor_WebAPI",
-        "projectPath": "C:\\Users\\USER\\Documents\\OCBC NISP\\bootcamp\\sesi09\\kantor_webapi\\Kantor_WebAPI.csproj",
+        "projectPath": "C:\\Users\\USER\\Documents\\OCBC NISP\\Bootcamp\\Sesi09\\Kantor_WebAPI\\Kantor_WebAPI.csproj",
         "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USER\\Documents\\OCBC NISP\\bootcamp\\sesi09\\kantor_webapi\\obj\\",
+        "outputPath": "C:\\Users\\USER\\Documents\\OCBC NISP\\Bootcamp\\Sesi09\\Kantor_WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
