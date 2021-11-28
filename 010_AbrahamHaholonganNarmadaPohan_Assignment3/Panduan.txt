@@ -1,0 +1,9 @@
+Tata Cara Penggunaan API "MovieApp"
+
+
+
+1. Import file database "moviedb.sql" kedalam PHPMyAdmin
+2. Buka Visual Studio / Visual Studio Code untuk menjalankan aplikasi
+3. Klik run pada Visual Studio/ ketik "dotnet run" pada VS Code untuk menjalankan program API
+4. Pilih 5 Menu API yang disediakan (Read All, Read 1, Create, Update, Delete)
+5. Masukkan parameter yang dibutuhkan untuk menjalankan API
