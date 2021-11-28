@@ -35,5 +35,26 @@ namespace Kantor_WebAPI.Controllers
             _context = HttpContext.RequestServices.GetService(typeof(EmployeeContext)) as EmployeeContext;
             return _context.GetEmployee(id);
         }
+
+        [HttpPost]
+        public ActionResult<IEnumerable<EmployeeItem>> AddEmployeeItem(int id, String nama, String jeniskelamin, String alamat)
+        {
+            _context = HttpContext.RequestServices.GetService(typeof(EmployeeContext)) as EmployeeContext;
+            return _context.InsertEmployee(id, nama, jeniskelamin, alamat);
+        }
+
+        [HttpPut]
+        public ActionResult<IEnumerable<EmployeeItem>> UpdateEmployeeItem(int id, String nama, String jeniskelamin, String alamat)
+        {
+            _context = HttpContext.RequestServices.GetService(typeof(EmployeeContext)) as EmployeeContext;
+            return _context.UpdateEmployee(id, nama, jeniskelamin, alamat);
+        }
+
+        [HttpDelete]
+        public ActionResult<IEnumerable<EmployeeItem>> DeleteEmployee(int id)
+        {
+            _context = HttpContext.RequestServices.GetService(typeof(EmployeeContext)) as EmployeeContext;
+            return _context.DeleteEmployee(id);
+        }
     }
 }
