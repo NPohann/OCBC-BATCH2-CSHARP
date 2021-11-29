@@ -71,15 +71,14 @@ namespace Kantor_WebAPI.Models
             return list;
         }
 
-        public List<EmployeeItem> InsertEmployee(int id, string nama, string jeniskelamin, string alamat)
+        public List<EmployeeItem> InsertEmployee(string nama, string jeniskelamin, string alamat)
         {
             List<EmployeeItem> list = new List<EmployeeItem>();
 
             using(MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("INSERT INTO employee VALUES(@id, @nama, @jeniskelamin, @alamat)", conn);
-                cmd.Parameters.AddWithValue("@id", id);
+                MySqlCommand cmd = new MySqlCommand("INSERT INTO employee (nama, jenis_kelamin, alamat) VALUES(@nama, @jeniskelamin, @alamat)", conn);
                 cmd.Parameters.AddWithValue("@nama", nama);
                 cmd.Parameters.AddWithValue("@jeniskelamin", jeniskelamin);
                 cmd.Parameters.AddWithValue("@alamat", alamat);
