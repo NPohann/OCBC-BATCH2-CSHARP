@@ -37,24 +37,24 @@ namespace Kantor_WebAPI.Controllers
         }
 
         [HttpPost]
-        public ActionResult<IEnumerable<EmployeeItem>> AddEmployeeItem(String nama, String jeniskelamin, String alamat)
+        public ActionResult<IEnumerable<EmployeeItem>> AddEmployeeItem(string nama, string jeniskelamin, string alamat)
         {
             _context = HttpContext.RequestServices.GetService(typeof(EmployeeContext)) as EmployeeContext;
-            return _context.InsertEmployee(nama, jeniskelamin, alamat);
+            return new JsonResult(_context.InsertEmployee(nama, jeniskelamin, alamat));
         }
 
         [HttpPut]
-        public ActionResult<IEnumerable<EmployeeItem>> UpdateEmployeeItem(int id, String nama, String jeniskelamin, String alamat)
+        public ActionResult<IEnumerable<EmployeeItem>> UpdateEmployeeItem(int id, string nama, string jeniskelamin, string alamat)
         {
             _context = HttpContext.RequestServices.GetService(typeof(EmployeeContext)) as EmployeeContext;
-            return _context.UpdateEmployee(id, nama, jeniskelamin, alamat);
+            return new JsonResult(_context.UpdateEmployee(id, nama, jeniskelamin, alamat));
         }
 
         [HttpDelete]
         public ActionResult<IEnumerable<EmployeeItem>> DeleteEmployee(int id)
         {
             _context = HttpContext.RequestServices.GetService(typeof(EmployeeContext)) as EmployeeContext;
-            return _context.DeleteEmployee(id);
+            return new JsonResult( _context.DeleteEmployee(id));
         }
     }
 }

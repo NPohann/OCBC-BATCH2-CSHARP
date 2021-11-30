@@ -71,9 +71,10 @@ namespace Kantor_WebAPI.Models
             return list;
         }
 
-        public List<EmployeeItem> InsertEmployee(string nama, string jeniskelamin, string alamat)
+        public string InsertEmployee(string nama, string jeniskelamin, string alamat)
         {
-            List<EmployeeItem> list = new List<EmployeeItem>();
+
+            string result;
 
             using(MySqlConnection conn = GetConnection())
             {
@@ -83,16 +84,22 @@ namespace Kantor_WebAPI.Models
                 cmd.Parameters.AddWithValue("@jeniskelamin", jeniskelamin);
                 cmd.Parameters.AddWithValue("@alamat", alamat);
 
-                cmd.ExecuteNonQuery();
+                int exe = cmd.ExecuteNonQuery();
+
+                if (exe == 1)
+                   result = "Data Berhasil Ditambahkan!";
+                else
+                    result = "Data Gagal Ditambahkan!";
             }
-            return list;
+            return result;
         }
 
-        public List<EmployeeItem> UpdateEmployee(int id, string nama, string jeniskelamin, string alamat)
+        public string UpdateEmployee(int id, string nama, string jeniskelamin, string alamat)
         {
-            List<EmployeeItem> list = new List<EmployeeItem>();
+            string result;
             using(MySqlConnection conn = GetConnection())
             {
+                
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand("UPDATE employee SET nama = @nama, jenis_kelamin = @jeniskelamin, alamat = @alamat WHERE id = @id", conn);
                 cmd.Parameters.AddWithValue("@id", id);
@@ -100,22 +107,32 @@ namespace Kantor_WebAPI.Models
                 cmd.Parameters.AddWithValue("@jeniskelamin", jeniskelamin);
                 cmd.Parameters.AddWithValue("@alamat", alamat);
 
-                cmd.ExecuteNonQuery();
+                int exe = cmd.ExecuteNonQuery();
+
+                if (exe == 1)
+                    result = "Data Berhasil Diupdate!";
+                else
+                    result = "Data Gagal Diupdate!";
             }
-            return list;
+            return result;
         }
 
-        public List<EmployeeItem> DeleteEmployee(int id)
+        public string DeleteEmployee(int id)
         {
-            List<EmployeeItem> list = new List<EmployeeItem>();
+            string result;
             using(MySqlConnection conn = GetConnection())
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand("DELETE FROM employee WHERE id = @id", conn);
                 cmd.Parameters.AddWithValue("@id", id);
-                cmd.ExecuteNonQuery();
+                int exe = cmd.ExecuteNonQuery();
+
+                if (exe == 1)
+                    result = "Data Berhasil Dihapus!";
+                else
+                    result = "Data Gagal Dihapus!";
             }
-            return list;
+            return result;
         }
 
     }
