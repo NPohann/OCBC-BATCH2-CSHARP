@@ -73,9 +73,9 @@ namespace MovieApp.Models
             return list;
         }
 
-        public List<MovieItem> InsertMovie(string name, string genre, string duration, DateTime releasedate)
+        public string InsertMovie(string name, string genre, string duration, DateTime releasedate)
         {
-            List<MovieItem> list = new List<MovieItem>();
+            string result;
 
             using (MySqlConnection conn = GetConnection())
             {
@@ -86,14 +86,18 @@ namespace MovieApp.Models
                 cmd.Parameters.AddWithValue("@duration", duration);
                 cmd.Parameters.AddWithValue("@releasedate", releasedate);
 
-                cmd.ExecuteNonQuery();
+                int res = cmd.ExecuteNonQuery();
+                if (res == 1)
+                    result = "Data berhasil Ditambahkan!";
+                else
+                    result = "Data gagal Ditambahkan!";
             }
-            return list;
+            return result;
         }
 
-        public List<MovieItem> UpdateMovie(int id, string name, string genre, string duration, DateTime releasedate)
+        public string UpdateMovie(int id, string name, string genre, string duration, DateTime releasedate)
         {
-            List<MovieItem> list = new List<MovieItem>();
+            string result;
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
@@ -104,23 +108,30 @@ namespace MovieApp.Models
                 cmd.Parameters.AddWithValue("@duration", duration);
                 cmd.Parameters.AddWithValue("@releasedate", releasedate);
 
-
-                cmd.ExecuteNonQuery();
+                int res = cmd.ExecuteNonQuery();
+                if (res == 1)
+                    result = "Data berhasil Diupdate!";
+                else
+                    result = "Data gagal Diupdate!";
             }
-            return list;
+            return result;
         }
 
-        public List<MovieItem> DeleteMovie(int id)
+        public string DeleteMovie(int id)
         {
-            List<MovieItem> list = new List<MovieItem>();
+            string result;
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand("DELETE FROM movie WHERE id = @id", conn);
                 cmd.Parameters.AddWithValue("@id", id);
-                cmd.ExecuteNonQuery();
+                int res = cmd.ExecuteNonQuery();
+                if (res == 1)
+                    result = "Data berhasil Dihapus!";
+                else
+                    result = "Data gagal Dihapus!";
             }
-            return list;
+            return result;
         }
     }
 }

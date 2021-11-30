@@ -40,21 +40,21 @@ namespace MovieApp.Controllers
         public ActionResult<IEnumerable<MovieItem>> AddMovieItem(String name, String genre, String duration, DateTime releasedate)
         {
             _context = HttpContext.RequestServices.GetService(typeof(MovieContext)) as MovieContext;
-            return _context.InsertMovie(name, genre, duration, releasedate);
+            return new JsonResult( _context.InsertMovie(name, genre, duration, releasedate));
         }
 
         [HttpPut]
         public ActionResult<IEnumerable<MovieItem>> UpdateMovieItem(int id, String name, String genre, String duration, DateTime releasedate)
         {
             _context = HttpContext.RequestServices.GetService(typeof(MovieContext)) as MovieContext;
-            return _context.UpdateMovie(id, name, genre, duration, releasedate);
+            return new JsonResult(_context.UpdateMovie(id, name, genre, duration, releasedate));
         }
 
         [HttpDelete]
         public ActionResult<IEnumerable<MovieItem>> DeleteMovie(int id)
         {
             _context = HttpContext.RequestServices.GetService(typeof(MovieContext)) as MovieContext;
-            return _context.DeleteMovie(id);
+            return new JsonResult(_context.DeleteMovie(id));
         }
     }
 }
