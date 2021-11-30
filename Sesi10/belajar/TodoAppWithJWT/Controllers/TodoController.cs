@@ -30,7 +30,8 @@ namespace TodoAppWithJWT.Controllers{
                 await _context.Items.AddAsync(data);
                 await _context.SaveChangesAsync();
 
-                return CreatedAtAction("GetItem", new {data.Id}, data);
+                // return CreatedAtAction("GetItem", new {data.Id}, data);
+                return new JsonResult("Data berhasil Ditambah!");
             }
 
             return new JsonResult("Something went wrong") {StatusCode = 500};
@@ -41,7 +42,7 @@ namespace TodoAppWithJWT.Controllers{
             var item = await _context.Items.FirstOrDefaultAsync(x => x.Id == id);
 
             if(item == null)
-                return NotFound();
+                return new JsonResult("Data tidak ada!");
 
             return Ok(item);
         }
@@ -54,7 +55,7 @@ namespace TodoAppWithJWT.Controllers{
             var existItem = await _context.Items.FirstOrDefaultAsync(x => x.Id == id);
 
             if(existItem == null)
-                return NotFound();
+                return new JsonResult("Data gagal diupdate!");
 
             existItem.Title = item.Title;
             existItem.Description = item.Description;
@@ -63,7 +64,7 @@ namespace TodoAppWithJWT.Controllers{
             // Implement the changes on the database level
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            return new JsonResult("Data berhasil diupdate!");
         }
 
         [HttpDelete("{id}")]
@@ -71,12 +72,12 @@ namespace TodoAppWithJWT.Controllers{
             var existItem = await _context.Items.FirstOrDefaultAsync(x => x.Id == id);
 
             if(existItem == null)
-                return NotFound();
+                return new JsonResult("Data gagal dihapus!");
 
             _context.Items.Remove(existItem);
             await _context.SaveChangesAsync();
 
-            return Ok(existItem);
+            return new JsonResult("Data berhasil dihapus!");
         }
     }
 }
